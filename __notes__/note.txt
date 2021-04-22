@@ -16,6 +16,16 @@ Widget{
     }
 }
 
+Abstraction/Access Modifier{
+    --> when a class/Property starts with underscore, it can only be used in the 
+    file it is defined in.
+    {
+        MyAppState, questionIndex => public
+        _MyAppState, _questionIndex => private
+    }
+
+}
+
 State{
     --> Data/info used by app
         --> e.g Variable etc
@@ -25,6 +35,22 @@ State{
         --> App Wide State
         --> Widget State
     }
+    --> force page reload by fixing it in setState (anonymous) function
+        setState(() {
+        questionIndex++;
+        });
+}
+
+Statefulwidget{
+    ` class MyApp extends StatefulWidget {
+        @override
+        State<StatefulWidget> createState() {
+        return MyAppState();
+        }
+      }
+      class MyAppState extends State<MyApp>{
+      }
+    `
 }
 
 Scaffold{

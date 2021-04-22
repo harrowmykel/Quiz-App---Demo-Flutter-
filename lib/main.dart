@@ -4,15 +4,28 @@ void main() {
   runApp(MyApp());
 }
 
-class MyApp extends StatelessWidget {
-  int questionIndex = 0;
-  final List<String> questions = [
+class MyApp extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() {
+    return _MyAppState();
+  }
+}
+
+class _MyAppState extends State<MyApp> {
+  int _questionIndex = 0;
+  List<String> questions = [
     'What is your fav color?',
     'What is your fav animal?',
   ];
 
   void answerQuestion(int chosen) {
-    questionIndex++;
+    setState(() {
+      if (_questionIndex < 1) {
+        _questionIndex++;
+      } else {
+        _questionIndex--;
+      }
+    });
   }
 
   @override
@@ -27,7 +40,7 @@ class MyApp extends StatelessWidget {
             body: Column(
               children: [
                 Text(
-                 questions[questionIndex],
+                  questions[_questionIndex],
                 ),
                 ElevatedButton(
                   child: Text("Answer 1"),
