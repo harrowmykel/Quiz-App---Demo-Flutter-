@@ -1,0 +1,83 @@
+Flutter{
+    --> everything is a widget
+}
+
+Widget{
+    --> created by flutter using the build(context) method in StatelessWidget
+            or StatefulWidget
+    --> displayed on screen
+
+    --> Types {
+        --> visible Widgets (input, output content)
+            --> buttons, text
+
+        --> invisible Widgets
+            --> columns, rows
+    }
+}
+
+State{
+    --> Data/info used by app
+        --> e.g Variable etc
+    --> widgets that just output data are usually stateless
+     --> e.g Text Widget
+    {
+        --> App Wide State
+        --> Widget State
+    }
+}
+
+Scaffold{
+    ==> base page design
+}
+
+Column{
+    Column(children: <Widget>[])
+}
+
+declarator{
+    --> @override
+}
+
+pubspec.yaml{
+    --> dependencies saving
+}
+
+main.dart{
+    --> entry point for app
+    -> import 'package:PACKAGE_NAME';
+}
+
+functions{
+    `void main(){
+        runApp(MyApp());
+    }
+        OR
+    //if only one expression, auto returned
+    void main() => runApp(MyApp());
+    `
+}
+
+class{
+    --> constructor parameters can be passed via variable name
+    `MyApp(name: 'west', age: 21)`
+    -> constructor can be executed like a function or with keyword 'new'
+         e.g MyApp(); or new MyApp();
+    `class ClassName{
+        String name;
+        int age;
+
+        //constructors
+
+        ClassName(int a, int b){
+            //ClassName(23, 40);
+        }
+                OR
+        ClassName({int a = 30, @required int b}){
+            //ClassName(a: 23, b: 40);
+            // @required is only available in Flutter not in dart
+        }
+                OR 
+        ClassName({this.name, this.age});
+    }`
+}
