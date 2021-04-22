@@ -2,6 +2,19 @@ Flutter{
     --> everything is a widget
 }
 
+Map/Objects{
+    --> collection of key:value pairs
+    --> created with 
+    `
+        {
+            a : value
+        }
+            OR
+
+        Map()
+    `
+}
+
 Widget{
     --> created by flutter using the build(context) method in StatelessWidget
             or StatefulWidget
@@ -14,6 +27,22 @@ Widget{
         --> invisible Widgets
             --> columns, rows
     }
+}
+
+ForEach.Widget{
+    --> Concatenate 2 lists
+        `children: [
+        Question(
+            question: questions[_questionIndex],
+        ),
+        ...(questions[_questionIndex] as List<String>).map((answer) {
+            return Answer(
+            question: questions[_questionIndex],
+            position: 0,
+            answerFunction: _answerQuestion,
+            );
+        }).toList(),
+        ], `
 }
 
 Abstraction/Access Modifier{
@@ -61,6 +90,11 @@ Column{
     Column(children: <Widget>[])
 }
 
+Container{
+    --> HTML/CSS box model,
+    --> container for widgets
+}
+
 declarator{
     --> @override
 }
@@ -106,5 +140,10 @@ class{
         }
                 OR 
         ClassName({this.name, this.age});
+                OR 
+        ClassName.subConstructor(this.name){
+            //set defaults
+            age = 60;
+        }
     }`
 }

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import './question.dart';
+import './answer.dart';
+import './edrawer.dart';
 
 void main() {
   runApp(MyApp());
@@ -14,12 +16,22 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   int _questionIndex = 0;
-  List<String> questions = [
-    'What is your fav color?',
-    'What is your fav animal?',
+  var questions = [
+    {
+      'questionText': 'What is your fav color?',
+      'answers': ['Blue', 'Pink', 'Purple'],
+    },
+    {
+      'questionText': 'What is your fav animal?',
+      'answers': ['Dog', 'Tiger', 'Lion'],
+    },
+    {
+      'questionText': 'Who is your favorite instructor?',
+      'answers': ['Max', 'Max', 'Max'],
+    }
   ];
 
-  void answerQuestion(int chosen) {
+  void _answerQuestion(int chosen) {
     setState(() {
       if (_questionIndex < 1) {
         _questionIndex++;
@@ -32,30 +44,26 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        home: Scaffold(
-            appBar: AppBar(title: Text('My first App')),
-            drawer: Drawer(
-              child: Text("TEST"),
+      home: Scaffold(
+        appBar: AppBar(title: Text('My first App')),
+        drawer: Edrawer(
+          children: ["TEXT 1", "TEXT 2"],
+        ),
+        body: Column(
+          children: [
+            Question(
+              question: questions[_questionIndex],
             ),
-            // dra
-            body: Column(
-              children: [
-                Text(
-                  questions[_questionIndex],
-                ),
-                ElevatedButton(
-                  child: Text("Answer 1"),
-                  onPressed: () => answerQuestion(1),
-                ),
-                ElevatedButton(
-                  child: Text("Answer 2"),
-                  onPressed: () => answerQuestion(2),
-                ),
-                ElevatedButton(
-                  child: Text("Answer 3"),
-                  onPressed: () => answerQuestion(3),
-                )
-              ],
-            )));
+            ...(questions[_questionIndex] as List<String>).map((answer) {
+              return Answer(
+                question: questions[_questionIndex],
+                position: 0,
+                answerFunction: _answerQuestion,
+              );
+            }).toList(),
+          ],
+        ),
+      ),
+    );
   }
 }
