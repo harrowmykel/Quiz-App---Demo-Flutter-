@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import './quiz.dart';
+import './result.dart';
 import './question.dart';
 import './answer.dart';
 import './edrawer.dart';
@@ -31,13 +33,9 @@ class _MyAppState extends State<MyApp> {
     }
   ];
 
-  void _answerQuestion(int chosen) {
+  void _answerQuestion(String chosen) {
     setState(() {
-      if (_questionIndex < 1) {
-        _questionIndex++;
-      } else {
-        _questionIndex--;
-      }
+      _questionIndex++;
     });
   }
 
@@ -49,20 +47,22 @@ class _MyAppState extends State<MyApp> {
         drawer: Edrawer(
           children: ["TEXT 1", "TEXT 2"],
         ),
-        body: Column(
-          children: [
-            Question(
-              question: questions[_questionIndex],
-            ),
-            ...(questions[_questionIndex] as List<String>).map((answer) {
-              return Answer(
-                question: questions[_questionIndex],
-                position: 0,
-                answerFunction: _answerQuestion,
-              );
-            }).toList(),
-          ],
-        ),
+        body: (_questionIndex >= questions.length)
+            ? Result(): Column(
+                children: [
+                  Question(
+                    question: questions[_questionIndex],
+                  ),
+                  ...(questions[_questionIndex]['answers'] as List<String>)
+                      .map((answer) {
+                    return Answer(
+                      question: questions[_questionIndex],
+                      text: answer,
+                      answerFunction: _answerQuestion,
+                    );
+                  }).toList(),
+                ],
+              ),
       ),
     );
   }

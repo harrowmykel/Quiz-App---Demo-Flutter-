@@ -15,6 +15,11 @@ Map/Objects{
     `
 }
 
+final/const{
+    --> final for class properties
+    --> const for method properties
+}
+
 Widget{
     --> created by flutter using the build(context) method in StatelessWidget
             or StatefulWidget
