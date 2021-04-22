@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 
 class Answer extends StatelessWidget {
   final question;
-  final String text;
+  final answer;
   final Function answerFunction;
 
-  Answer({this.question, this.text, this.answerFunction});
+  Answer({this.question, this.answer, this.answerFunction});
 
   @override
   Widget build(BuildContext context) {
@@ -17,10 +17,10 @@ class Answer extends StatelessWidget {
         //   foregroundColor: Colors.blue,
         // ),
         child: Text(
-          text,
+          answer['text'],
           style: TextStyle(color: Colors.white),
         ),
-        onPressed: () => answerFunction(text),
+        onPressed: answerFunction,
       ),
     );
   }
