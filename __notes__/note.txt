@@ -2,6 +2,15 @@ Flutter{
     --> everything is a widget
 }
 
+App/Page Setup{
+    --> Material ==> Android
+    --> Cupertino ==> iOS
+    {
+        MaterialApp/CupertinoApp,
+        Scaffold/CupertinoPageScaffold
+    }
+}
+
 Map/Objects{
     --> collection of key:value pairs
     --> created with 
@@ -24,6 +33,7 @@ Widget{
     --> created by flutter using the build(context) method in StatelessWidget
             or StatefulWidget
     --> displayed on screen
+    --> Search flutter widget catalog for all widgets
 
     --> Types {
         --> visible Widgets (input, output content)
