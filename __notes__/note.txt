@@ -45,6 +45,7 @@ Widget{
 }
 
 ForEach.Widget{
+    -> use (List.map(item => Widget().toList())) tom implement a widget  creation loop
     --> Concatenate 2 lists
         `children: [
         Question(
@@ -58,6 +59,13 @@ ForEach.Widget{
             );
         }).toList(),
         ], `
+}
+type casing{
+    --> use (0.0 as int) to get same effect as 
+    (int) 0.0
+}
+string interpolation{
+    -->Text('${groupedTx['day']} : ${groupedTx['amount']}');
 }
 
 Abstraction/Access Modifier{
@@ -86,13 +94,16 @@ State{
 }
 
 Statefulwidget{
+    --> acces widget properties/fn inside state class with "widget."
     ` class MyApp extends StatefulWidget {
         @override
         State<StatefulWidget> createState() {
         return MyAppState();
         }
+        void addTime(){}
       }
       class MyAppState extends State<MyApp>{
+          widget.addTime();
       }
     `
 }
@@ -109,7 +120,9 @@ Container{
     --> HTML/CSS box model,
     --> container for widgets
 }
-
+Padding/Margin{
+    -->use EdgeInsets.x for spacing
+}
 declarator{
     --> @override
 }
@@ -132,6 +145,16 @@ functions{
     //if only one expression, auto returned
     void main() => runApp(MyApp());
     `
+}
+
+getters and setter{
+    --> getter function
+        `List<Transaction> get _recentTransactions{
+            return [];
+        }`
+    --> getter use case;
+        `var x = _recentTransactions;` 
+
 }
 
 class{
@@ -162,3 +185,62 @@ class{
         }
     }`
 }
+
+Scrolling{
+    --> implement scrolling with 
+    --> SingleChildScrollView
+        --> requires a fixed parent height
+        -> used directly in body of materialApp
+    --> ListView in a Container with defined height
+    --> ListView.builder() ==> RecyclerView()
+}
+
+Replacements for Deprecated/New Buttons{
+    --> to change the material buttons colors use
+    ElevatedButton{
+        style: ButtonStyle{
+            backgroundColor: MaterialStateProperty.all(Colors.blue)
+        }
+                    OR 
+        style: ElevatedButton.styleFrom(
+            primary: Colors.blue, //background
+            onPrimary: Colors.red //foreground
+        )
+    }
+}
+
+Libraries{
+    {
+        intl -> handles date formatting
+    }
+}
+
+X.of(context){
+    --> use X.of(context) to get context properties
+        --> Theme.of(context)
+        --> 
+}
+Images{
+    -->wrap images in container to fit block
+}
+
+SizedBox{
+    --> use sizedbox to create margin between widgets
+}
+
+ Flexible{
+    --> use Flexible to fit content around screen like 
+    html css flex e.g
+      `Flexible(
+            //take all free space
+            fit: FlexFit.tight,
+                OR
+            //take enough free space
+            fit: FlexFit.loose,
+
+
+            //set proportional width of unit chartbar
+            flex: 1,
+      )`
+    --> Expanded ==> Flexible with fit: FlexFit.tight,
+ }
